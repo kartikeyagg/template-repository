@@ -1,9 +1,9 @@
 = Template repository
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.1.0
-:revdate: 2022-07-21T18:20:39+09:00
-:revremark: Expand template
+:revnumber: v0.2.0
+:revdate: 2022-07-21T18:28:52+09:00
+:revremark: Add MIT-0 LICENSE
 :description: README for {doctitle}
 :copyright: Copyright (C) 2022 {author}
 // Custom Attributes
@@ -12,6 +12,10 @@
 
 
 '''
+
+This project is available under the link:./LICENSE[MIT-0^] License. +
+link:https://choosealicense.com/licenses/mit-0/[
+Preservation of copyright and license notices isn't required.^]
 
 :author_link: link:https://github.com/hituzi-no-sippo[{author}^]
 Copyright (C) 2022 {author_link}
