@@ -1,15 +1,16 @@
 = Shell
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.8.0
-:revdate: 2022-08-18T21:00:17+09:00
-:revremark: add GitHub Actions to check quotes
+:revnumber: v0.9.0
+:revdate: 2022-08-18T21:02:14+09:00
+:revremark: add git hook to check format
 :description: Shell
 :copyright: Copyright (C) 2022 {author}
 // Custom Attributes
 :creation_date: 2022-07-24T16:00:52+09:00
 :github_url: https://github.com
 :root_directory: ../..
+:pre_commit_config_file: {root_directory}/.pre-commit-config.yaml
 :workflows_directory: {root_directory}/.github/workflows
 
 :github_actions_marketplace_url: {github_url}/marketplace/actions
@@ -18,6 +19,12 @@
 
 :shfmt_link: link:{github_url}/mvdan/sh[shfmt^]
 Using {shfmt_link}.
+
+:pre_commit_for_shell_format_link: link:{github_url}/scop/pre-commit-shfmt[scop/pre-commit-hooks^]
+.Git hooks
+pre-commit::
+  Using link:{pre_commit_config_file}#:~:text=%2D%20repo%3A%20https%3A%2F/github.com/scop/pre%2Dcommit%2Dhooks[
+  pre-commit^] ({pre_commit_for_shell_format_link})
 
 :filename: lint-shell.yml
 :filename_on_pull_request: lint-shell-on-pull-request.yml

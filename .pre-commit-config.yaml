@@ -4,6 +4,13 @@ default_stages:
   - commit
 
 repos:
+  # Shell
+  # Format
+  - repo: https://github.com/scop/pre-commit-shfmt
+    rev: v3.5.1-1
+    hooks:
+      - id: shfmt
+
   # JSON & YAML
   # Formatter
   - repo: https://github.com/adamchainz/pre-commit-dprint
