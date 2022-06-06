@@ -1,15 +1,17 @@
 = Git hooks
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.4.0
-:revdate: 2022-07-27T14:47:37+09:00
-:revremark: Add hook for validation for pre-commit.ci configuration
+:revnumber: v0.5.0
+:revdate: 2022-07-27T17:45:13+09:00
+:revremark: add hook to trim trailing spaces
 :description: Git hooks
 :copyright: Copyright (C) 2022 {author}
 // Custom Attributes
 :creation_date: 2022-07-24T17:28:24+09:00
 :github_url: https://github.com
 :pre_commit_ci_org_url: {github_url}/pre-commit-ci
+:pre_commit_orizinazation_url: {github_url}/pre-commit
+:pre_commit_repository_url: {pre_commit_orizinazation_url}/pre-commit-hooks
 :pre_commit_config_file: ../../../.pre-commit-config.yaml
 
 == Hooks
@@ -18,10 +20,21 @@ Write the documentation for the linter and formatter hooks
 into the target document.
 For example, the JSON formatter hooks are in the JSON document.
 
+:hardbreaks-option:
+
+=== Style
+
+:trim_trailing_whitespace_link: link:{pre_commit_repository_url}#trailing-whitespace[trim trailing spaces^]
+* {trim_trailing_whitespace_link}
+  `end of line____` (`_` is space) => `end of line`
+  Don't trim markdowns.
+
 === pre-commit
 
 :validation_for_pre_commit_ci_config_link: {pre_commit_ci_org_url}/pre-commit-ci-config#as-a-pre-commit-hook[validation for pre-commit.ci configuration^]
 * {validation_for_pre_commit_ci_config_link}
+
+:!hardbreaks-option:
 
 
 == Manager
