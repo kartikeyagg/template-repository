@@ -23,3 +23,15 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           args: format --check --colors always
+
+  lint:
+    name: Lint
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Lint TOML
+        uses: hituzi-no-sippo/taplo-action@v1.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          args: lint --colors always
