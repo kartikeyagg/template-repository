@@ -1,0 +1,25 @@
+---
+name: Lint TOML
+
+on:
+  push:
+    paths:
+      - "**.toml"
+      - ".taplo.toml"
+  pull_request:
+    paths:
+      - "**.toml"
+      - ".taplo.toml"
+
+jobs:
+  format:
+    name: Check format
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check TOML Format
+        uses: hituzi-no-sippo/taplo-action@v1.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          args: format --check --colors always
