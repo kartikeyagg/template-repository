@@ -56,6 +56,7 @@ repos:
     rev: v1.0.0
     hooks:
       - id: taplo-format
+      - id: taplo-lint
 
   # INI
   # Format
@@ -122,5 +123,6 @@ ci:
     - shellharden
     - dprint
     - taplo-format
+    - taplo-lint
     - actionlint
     - vale
