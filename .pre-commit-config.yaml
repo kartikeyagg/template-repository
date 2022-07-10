@@ -50,6 +50,13 @@ repos:
       - id: yamllint
         args: [--strict]
 
+  # TOML
+  # Format
+  - repo: https://github.com/hituzi-no-sippo/pre-commit-hooks-toml-with-taplo
+    rev: v1.0.0
+    hooks:
+      - id: taplo-format
+
   # INI
   # Format
   - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
@@ -114,5 +121,6 @@ ci:
     - shellcheck
     - shellharden
     - dprint
+    - taplo-format
     - actionlint
     - vale
