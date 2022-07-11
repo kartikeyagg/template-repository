@@ -1,9 +1,9 @@
 = Git commit message
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.5.0
-:revdate: 2022-07-11T20:58:35+09:00
-:revremark: add GitHub Actions
+:revnumber: v0.6.0
+:revdate: 2022-07-11T21:19:10+09:00
+:revremark: add GitHub Bot to lint commit message
 :description: Git commit message tools
 :copyright: Copyright (C) 2022 {author}
 // Custom Attributes
@@ -44,6 +44,11 @@ link:{root_directory}/.github/workflows/{filename}[{filename}^]
 
 :cocogitto_action_link: link:{github_url}/marketplace/actions/conventional-commit-cocogitto-action[cocogitto-action^]
 Lint commit message (`cog check --from-latest-tag`) with {cocogitto_action_link}.
+
+=== GitHub Bot
+
+link:https://github.com/apps/cocogitto-bot[
+Cocogitto-bot^] comments the lint error message on pull request event.
 
 
 '''
