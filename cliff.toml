@@ -42,7 +42,7 @@ commit_parsers = [
 ]
 filter_commits = false
 tag_pattern = "v[0-9]*"
-skip_tags = "v0.1.0-beta.1"
+skip_tags = ""
 ignore_tags = ""
 date_order = false
 sort_commits = "oldest"
