@@ -41,6 +41,7 @@ commit_parsers = [
   { message = "^ci", skip = true },
   { message = "^build", skip = true },
   { message = "^chore", skip = true },
+  { message = "^doc", group = "Documentation" },
   { message = "^.*: add", group = "Added" },
   { message = "^.*: support", group = "Added" },
   { message = "^.*: remove", group = "Removed" },
