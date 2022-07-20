@@ -9,6 +9,15 @@ function info() {
 	printf "\n%s\n" "${1}"
 }
 
+function __setup_json_tools() {
+	info "Setup JSON tools"
+
+	function __setup_formatter() {
+		cargo install dprint
+	}
+
+	__setup_formatter
+}
 function __setup_natural_language() {
 	info "Setup natural language tools"
 
@@ -22,6 +31,7 @@ function __setup_natural_language() {
 function setup() {
 	info "Setup Start"
 
+	__setup_json_tools
 	__setup_natural_language
 
 	info "Setup Complete"
