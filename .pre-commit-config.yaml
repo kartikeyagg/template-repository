@@ -4,13 +4,14 @@ default_stages:
   - commit
 
 repos:
-  # YAML
+  # JSON & YAML
   # Formatter
   - repo: https://github.com/adamchainz/pre-commit-dprint
     rev: v0.32.1
     hooks:
       - id: dprint
         types_or:
+          - json
           - yaml
 
   # YAML
@@ -34,3 +35,6 @@ ci:
     fix(git-hook): auto fixes from pre-commit.com hooks
 
     for more information, see https://pre-commit.ci
+
+  skip:
+    - dprint
