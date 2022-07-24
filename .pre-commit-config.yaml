@@ -14,6 +14,15 @@ repos:
           - json
           - yaml
 
+  # JSON
+  # Lint
+  - repo: https://github.com/TomWright/dasel
+    rev: v1.27.1
+    hooks:
+      - id: dasel-validate
+        types:
+          - json
+
   # YAML
   # Lint
   # https://yamllint.readthedocs.io/en/stable/integration.html#integration-with-pre-commit
