@@ -8,3 +8,4 @@ pyflakes
 dependabot
 config
 shfmt
+shellcheck
