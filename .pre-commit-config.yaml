@@ -1,0 +1,8 @@
+---
+ci:
+  autoupdate_schedule: weekly
+  autoupdate_commit_msg: "build(git-hook): update pre-commit hooks"
+  autofix_commit_msg: |
+    fix(git-hook): auto fixes from pre-commit.com hooks
+
+    for more information, see https://pre-commit.ci
