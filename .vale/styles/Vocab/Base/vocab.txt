@@ -11,3 +11,4 @@ shfmt
 shellcheck
 shellharden
 dasel
+mergeability
