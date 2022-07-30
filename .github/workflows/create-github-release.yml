@@ -1,0 +1,32 @@
+---
+name: Create GitHub Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  create:
+    name: Create GitHub Release
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          # Get the full git history to generate Release Note with git-cliff.
+          fetch-depth: 0
+
+      - name: Set up git-cliff
+        uses: kenji-miyake/setup-git-cliff@v1
+
+      - name: Generate release note with git-cliff
+        run: |
+          git-criff \
+            --config .git-cliff/release-note.toml \
+            --output release-note.md
+
+      - name: Upload github release
+        uses: softprops/action-gh-release@v1
+        with:
+          body_path: release-note.md
