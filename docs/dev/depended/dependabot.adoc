@@ -1,9 +1,9 @@
 = Dependabot
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.2.0
-:revdate: 2022-08-03T07:58:52+09:00
-:revremark: add GitHub Actinos to Package managers to check for updates
+:revnumber: v0.3.0
+:revdate: 2022-08-06T13:17:50+09:00
+:revremark: add npm to Package managers to check for updates
 :description: DependedBot
 :copyright: Copyright (C) 2022 {author}
 // Custom Attributes
@@ -12,6 +12,7 @@
 
 .Package managers to check for updates
 * GitHub Actions
+* npm
 
 link:{root_directory}/.github/dependabot.yml[Configuration File^]
 
