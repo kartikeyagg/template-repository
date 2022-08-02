@@ -3,3 +3,5 @@ sippo
 dprint
 actionlint
 reviewdog
+shellcheck
+pyflakes
