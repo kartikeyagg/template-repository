@@ -5,3 +5,4 @@ actionlint
 reviewdog
 shellcheck
 pyflakes
+dependabot
