@@ -1,9 +1,9 @@
 = Template repository
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.8.0
-:revdate: 2022-07-25T19:56:30+09:00
-:revremark: Add actionlint of GitHub Actions linter
+:revnumber: v0.9.0
+:revdate: 2022-08-03T16:04:20+09:00
+:revremark: Add DependedBot
 :description: README for {doctitle}
 :copyright: Copyright (C) 2022 {author}
 // Custom Attributes
@@ -62,6 +62,16 @@ Docs:: Vale
 .The tools not installed by setup
 * link:{vale_url}/docs/vale-cli/installation/[Vale^]
 ====
+
+=== Depended
+
+==== DependedBot
+
+Check for package updates of package managers.
+
+See link:./docs/dev/depended/dependabot.adoc[^] for
+a list of package manager to check for updates.
+
 
 [NOTE]
 ====

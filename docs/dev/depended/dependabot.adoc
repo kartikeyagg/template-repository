@@ -1,14 +1,29 @@
 = Dependabot
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.1.0
-:revdate: 2022-08-03T04:22:28+09:00
-:revremark: expand template
+:revnumber: v0.2.0
+:revdate: 2022-08-03T07:58:52+09:00
+:revremark: add GitHub Actinos to Package managers to check for updates
 :description: DependedBot
 :copyright: Copyright (C) 2022 {author}
 // Custom Attributes
 :creation_date: 2022-08-03T04:22:28+09:00
+:root_directory: ../../..
 
+.Package managers to check for updates
+* GitHub Actions
+
+link:{root_directory}/.github/dependabot.yml[Configuration File^]
+
+DependedBot checks every day to see if the package can be updated.
+This is because have set `interval: daily` in dependabot config.
+
+[TIP]
+====
+Package managers such as Docker, Cargo and Go modules are also
+link:https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/about-dependabot-version-updates#supported-repositories-and-ecosystems[
+supported^].
+====
 
 
 '''

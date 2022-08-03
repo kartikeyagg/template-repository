@@ -6,3 +6,4 @@ reviewdog
 shellcheck
 pyflakes
 dependabot
+config
