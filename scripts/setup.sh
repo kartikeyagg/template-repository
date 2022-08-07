@@ -46,6 +46,14 @@ function __setup_yaml_tools() {
 	__setup_formatter
 	__setup_linter
 }
+function __setup_ini_tools() {
+	info "Setup INI tools"
+	function __setup_formatter() {
+		go install github.com/editorconfig-checker/editorconfig-checker/cmd/editorconfig-checker@latest
+	}
+
+	__setup_formatter
+}
 function __setup_github_actions_linter() {
 	info "Setup GitHub Actions linter"
 
@@ -75,6 +83,7 @@ function setup() {
 	__setup_shell_tools
 	__setup_json_tools
 	__setup_yaml_tools
+	__setup_ini_tools
 	__setup_github_actions_linter
 	__setup_git_hooks
 	__setup_natural_language
