@@ -75,6 +75,12 @@ repos:
     hooks:
       - id: actionlint
 
+  # Spell
+  - repo: https://github.com/crate-ci/typos
+    rev: v1.10.3
+    hooks:
+      - id: typos-src
+
   # Markdown
   # Lint
   - repo: https://github.com/igorshubovych/markdownlint-cli
