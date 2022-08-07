@@ -95,6 +95,11 @@ function __setup_natural_language() {
 
 	__setup_linter
 }
+function __setup_spell_checker() {
+	info 'Setup Spell checker'
+
+	cargo install typos-cli
+}
 function __setup_markdown_tools() {
 	info "Setup Markdown tools"
 
@@ -122,6 +127,7 @@ function setup() {
 	__setup_git_hooks
 	__setup_changelog_generator
 	__setup_natural_language
+	__setup_spell_checker
 	__setup_markdown_tools
 
 	info "Setup Complete"
