@@ -50,6 +50,14 @@ repos:
       - id: yamllint
         args: [--strict]
 
+  # INI
+  # Format
+  - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
+    rev: 2.4.0
+    hooks:
+      - id: editorconfig-checker
+        files: ^.*\.ini$
+
   # GitHub Actions
   # Lint
   # https://github.com/rhysd/actionlint/blob/main/docs/usage.md#pre-commit
