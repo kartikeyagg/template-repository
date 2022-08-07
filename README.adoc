@@ -52,6 +52,7 @@ Lint:: {yamllint_link}
 ==== INI
 
 :editorconfig_checker_link: link:{github_url}/editorconfig-checker/editorconfig-checker[editorconfig-checker^]
+[horizontal]
 Format:: {editorconfig_checker_link}
 
 
