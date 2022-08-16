@@ -1,9 +1,9 @@
 = Shell
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.10.0
-:revdate: 2022-08-18T21:02:22+09:00
-:revremark: add git hook for shellcheck
+:revnumber: v0.11.0
+:revdate: 2022-08-18T21:02:50+09:00
+:revremark: add git hook for shellharden
 :description: Shell
 :copyright: Copyright (C) 2022 {author}
 // Custom Attributes
@@ -101,11 +101,17 @@ pre-commit::
 
 Using shellharden to fix quotes (`+${hoo}+` => `"$hoo"`).
 
+:pre_commit_for_shellharden_link: link:{github_url}/hituzi-no-sippo/pre-commit-hook-with-shellharden/[hituzi-no-sippo/pre-commit-hook-with-shellharden^]
+.Git hooks
+pre-commit::
+  Using link:{pre_commit_config_file}#:~:text=repo%3A%20https%3A%2F/github.com/hituzi%2Dno%2Dsippo/pre%2Dcommit%2Dhook%2Dwith%2Dshellharden[
+  pre-commit^] ({pre_commit_for_shellharden_link}). +
+
 :filename: check-quoting-in-shell.yml
 :cargo_install_link: link:{github_actions_marketplace_url}/cargo-install[cargo-install^]
 .GitHub Actions
 * link:{workflows_directory}/{filename}[{filename}^] +
-  Using {github_actions_marketplace_url}.
+  Using {cargo_install_link}.
 
 
 '''

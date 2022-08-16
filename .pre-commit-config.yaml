@@ -17,6 +17,10 @@ repos:
     hooks:
       - id: shellcheck
         args: [--severity=style]
+  - repo: https://github.com/hituzi-no-sippo/pre-commit-hook-with-shellharden
+    rev: ed57b90bb6a7c64bf5655c50bac082e67b157c00
+    hooks:
+      - id: shellharden
 
   # JSON & YAML
   # Formatter
@@ -61,4 +65,5 @@ ci:
 
   skip:
     - shellcheck
+    - shellharden
     - dprint
