@@ -1,0 +1,28 @@
+---
+name: Check quoting in shell
+
+on:
+  push:
+    paths:
+      - "**.sh"
+  pull_request:
+    paths:
+      - "**.sh"
+
+jobs:
+  lint:
+    name: Check quoting with shellharden
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install shellharden
+        uses: baptiste0928/cargo-install@v1
+        with:
+          crate: shellharden
+
+      - name: Check quoting with shellharden
+        # exit with 1 if changes are suggested.
+        # The exit code is for find command, not shellharden.
+        run: find . -type f -name '*.sh' -exec shellharden --check {} +
