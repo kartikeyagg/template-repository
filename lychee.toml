@@ -18,5 +18,8 @@ exclude = [
   # Repository Generate
   # https://github.com/hituzi-no-sippo/template-repository/generate
   "https://github.com/.*/generate",
+
+  # For dprint
+  "https://plugins.dprint.dev/prettier-0.10.0.json@",
 ]
 exclude_path = [".git", "node_modules", "package-lock.json", ".vale/styles"]
