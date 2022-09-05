@@ -1,0 +1,26 @@
+---
+name: Check broken links
+
+on:
+  # yamllint disable-line rule:empty-values
+  push:
+
+jobs:
+  check:
+    name: Check broken links
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      report: ${{ steps.output-report.outputs.report }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Check broken url with lychee
+        # yamllint disable-line rule:line-length
+        uses: hituzi-no-sippo/lychee-action@3fd0558ab89038aee602fd375ad50fa722056c3b
+        id: check-links
+        with:
+          args: --verbose --no-progress "**/*"
+          fail: true
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
