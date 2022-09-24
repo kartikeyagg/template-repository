@@ -111,6 +111,15 @@ repos:
         entry: scripts/release/lint-generated-CHANGELOG.sh
         files: cliff.toml
 
+  # Link
+  - repo: https://github.com/hituzi-no-sippo/pre-commit-hooks-with-lychee
+    rev: affc8b2a9a89ff975f251e317e076b6aabd2a21b
+    hooks:
+      - id: lychee
+        args:
+          - --cache
+          - --max-cache-age=1d
+
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.3.0
     hooks:
@@ -158,3 +167,4 @@ ci:
     - actionlint
     - vale
     - lint-generated-CHANGELOG-with-markdown-linter
+    - lychee
