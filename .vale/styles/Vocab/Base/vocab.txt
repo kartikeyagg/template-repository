@@ -1,3 +1,7 @@
 hituzi
 sippo
 dprint
+actionlint
+reviewdog
+shellcheck
+pyflakes
