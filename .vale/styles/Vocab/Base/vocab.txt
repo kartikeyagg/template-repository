@@ -2,3 +2,4 @@ hituzi
 sippo
 dprint
 actionlint
+reviewdog
