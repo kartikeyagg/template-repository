@@ -1,9 +1,9 @@
 = Template repository
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.4.0
-:revdate: 2022-07-25T16:35:32+09:00
-:revremark: Add Setup
+:revnumber: v0.5.0
+:revdate: 2022-07-25T19:55:33+09:00
+:revremark: Add Vale of natural language linter
 :description: README for {doctitle}
 :copyright: Copyright (C) 2022 {author}
 // Custom Attributes
@@ -13,6 +13,36 @@
 :repository: {owner_name}/{repository_name}
 :github_url: https://github.com
 :repository_url: {github_url}/{repository}
+
+== Tools
+
+=== Writing docs
+
+==== Natural language
+
+:vale_url: https://vale.sh
+:vale_link: link:{vale_url}[Vale^]
+[horizontal]
+Lint:: {vale_link}
+Spell Check::
++
+--
+[horizontal]
+Docs:: Vale
+--
+
+
+[CAUTION]
+====
+.The tools not installed by setup
+* link:{vale_url}/docs/vale-cli/installation/[Vale^]
+====
+
+[NOTE]
+====
+See `docs/dev` for more details.
+====
+
 
 == Introduction
 
