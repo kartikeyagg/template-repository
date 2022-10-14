@@ -9,3 +9,4 @@ dependabot
 config
 shfmt
 shellcheck
+shellharden

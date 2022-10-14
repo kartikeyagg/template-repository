@@ -1,9 +1,9 @@
 = Template repository
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.11.0
-:revdate: 2022-08-03T18:19:36+09:00
-:revremark: Add shellcheck of shell linter
+:revnumber: v0.12.0
+:revdate: 2022-08-16T17:54:51+09:00
+:revremark: Add shellharden of shell linter
 :description: README for {doctitle}
 :copyright: Copyright (C) 2022 {author}
 // Custom Attributes
@@ -20,10 +20,12 @@
 
 :shfmt_link: link:{github_url}/mvdan/sh[shfmt^]
 :shellcheck_link: link:https://www.shellcheck.net/[shellcheck^]
+:shellharden_link: link:{github_url}/anordal/shellharden[shellharden^]
 [horizontal]
 Format:: {shfmt_link}
 Lint::
   * {shellcheck_link}
+  * {shellharden_link}
 
 :dprint_url: https://dprint.dev
 :dprint_link: link:{dprint_url}[dprint^]
