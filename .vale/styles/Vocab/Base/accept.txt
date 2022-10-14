@@ -1,5 +1,6 @@
 json
 JSON
+yaml
 YAML
 CI
 GitHub Actions
