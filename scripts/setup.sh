@@ -37,8 +37,14 @@ function __setup_yaml_tools() {
 	function __setup_formatter() {
 		cargo install dprint
 	}
+	function __setup_linter() {
+		# Use `python -m pip` instead of `pip`.
+		# https://snarky.ca/why-you-should-use-python-m-pip/
+		python -m pip install --upgrade yamllint --user
+	}
 
 	__setup_formatter
+	__setup_linter
 }
 function __setup_github_actions_linter() {
 	info "Setup GitHub Actions linter"
