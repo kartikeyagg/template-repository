@@ -9,6 +9,19 @@ function info() {
 	printf "\n%s\n" "${1}"
 }
 
+function __setup_shell_tools() {
+	info "Setup shell tools"
+
+	function __setup_formatter() {
+		go install mvdan.cc/sh/v3/cmd/shfmt@latest
+	}
+	function __setup_linter() {
+		cargo install shellharden
+	}
+
+	__setup_formatter
+	__setup_linter
+}
 function __setup_json_tools() {
 	info "Setup JSON tools"
 
@@ -45,6 +58,7 @@ function __setup_natural_language() {
 function setup() {
 	info "Setup Start"
 
+	__setup_shell_tools
 	__setup_json_tools
 	__setup_yaml_tools
 	__setup_github_actions_linter
