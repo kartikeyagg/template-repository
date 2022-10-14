@@ -7,3 +7,5 @@ shellcheck
 pyflakes
 dependabot
 config
+shfmt
+shellcheck
