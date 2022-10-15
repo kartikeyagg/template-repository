@@ -4,6 +4,24 @@ default_stages:
   - commit
 
 repos:
+  # Shell
+  # Format
+  - repo: https://github.com/scop/pre-commit-shfmt
+    rev: v3.5.1-1
+    hooks:
+      - id: shfmt
+  # Lint
+  # https://github.com/koalaman/shellcheck#pre-commit
+  - repo: https://github.com/koalaman/shellcheck-precommit
+    rev: v0.8.0
+    hooks:
+      - id: shellcheck
+        args: [--severity=style]
+  - repo: https://github.com/hituzi-no-sippo/pre-commit-hook-with-shellharden
+    rev: ed57b90bb6a7c64bf5655c50bac082e67b157c00
+    hooks:
+      - id: shellharden
+
   # JSON & YAML
   # Formatter
   - repo: https://github.com/adamchainz/pre-commit-dprint
@@ -46,4 +64,6 @@ ci:
     for more information, see https://pre-commit.ci
 
   skip:
+    - shellcheck
+    - shellharden
     - dprint
