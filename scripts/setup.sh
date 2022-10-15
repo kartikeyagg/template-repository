@@ -81,6 +81,11 @@ function __setup_git_hooks() {
 		--hook-type pre-commit \
 		--hook-type commit-msg
 }
+function __setup_changelog_generator() {
+	info "Setup CHANGELOG generator"
+
+	cargo install git-cliff
+}
 function __setup_natural_language() {
 	info "Setup natural language tools"
 
@@ -102,6 +107,7 @@ function setup() {
 	__setup_github_actions_linter
 	__setup_git_commit_message
 	__setup_git_hooks
+	__setup_changelog_generator
 	__setup_natural_language
 
 	info "Setup Complete"
