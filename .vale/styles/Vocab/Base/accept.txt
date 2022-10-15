@@ -2,6 +2,7 @@ json
 JSON
 yaml
 YAML
+TOML
 CI
 ci
 GitHub Actions

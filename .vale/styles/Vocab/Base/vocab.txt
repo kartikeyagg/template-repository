@@ -12,3 +12,4 @@ shellcheck
 shellharden
 dasel
 mergeability
+taplo

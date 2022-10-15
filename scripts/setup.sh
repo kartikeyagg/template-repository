@@ -46,6 +46,14 @@ function __setup_yaml_tools() {
 	__setup_formatter
 	__setup_linter
 }
+function __setup_toml_tools() {
+	info "Setup TOML tools"
+	function __setup_formatter_and_linter() {
+		cargo install taplo-cli
+	}
+
+	__setup_formatter_and_linter
+}
 function __setup_ini_tools() {
 	info "Setup INI tools"
 	function __setup_formatter() {
@@ -83,6 +91,7 @@ function setup() {
 	__setup_shell_tools
 	__setup_json_tools
 	__setup_yaml_tools
+	__setup_toml_tools
 	__setup_ini_tools
 	__setup_github_actions_linter
 	__setup_git_hooks
