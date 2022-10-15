@@ -67,13 +67,19 @@ function __setup_github_actions_linter() {
 
 	go install github.com/rhysd/actionlint/cmd/actionlint@latest
 }
+function __setup_git_commit_message() {
+	info "Setup git commit message linter"
+
+	cargo install cocogitto
+}
 function __setup_git_hooks() {
 	info "Setup git hooks manager"
 
 	python -m pip install --upgrade pre-commit
 
 	pre-commit install --overwrite \
-		--hook-type pre-commit
+		--hook-type pre-commit \
+		--hook-type commit-msg
 }
 function __setup_natural_language() {
 	info "Setup natural language tools"
@@ -94,6 +100,7 @@ function setup() {
 	__setup_toml_tools
 	__setup_ini_tools
 	__setup_github_actions_linter
+	__setup_git_commit_message
 	__setup_git_hooks
 	__setup_natural_language
 

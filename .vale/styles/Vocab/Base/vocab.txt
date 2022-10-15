@@ -13,3 +13,4 @@ shellharden
 dasel
 mergeability
 taplo
+cocogitto

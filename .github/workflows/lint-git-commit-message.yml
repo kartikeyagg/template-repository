@@ -1,0 +1,21 @@
+---
+name: Lint Git Commit Message
+
+on: [push, pull_request]
+
+jobs:
+  conventional-commits:
+    name: Check Conventional Commit Compliance with Cocogitto
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          # Get the full git history.
+          # https://docs.cocogitto.io/ci_cd/#conventional-commits-check
+          fetch-depth: 0
+
+      - name: Conventional Commit Check with Cocogitto
+        uses: cocogitto/cocogitto-action@v3
+        with:
+          check-latest-tag-only: true
