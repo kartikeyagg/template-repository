@@ -1,0 +1,110 @@
+---
+# Can't use YAML anchors in the pre-commit configuration.
+default_stages:
+  - commit
+
+repos:
+  # Shell
+  # Format
+  - repo: https://github.com/scop/pre-commit-shfmt
+    rev: v3.5.1-1
+    hooks:
+      - id: shfmt
+  # Lint
+  # https://github.com/koalaman/shellcheck#pre-commit
+  - repo: https://github.com/koalaman/shellcheck-precommit
+    rev: v0.8.0
+    hooks:
+      - id: shellcheck
+        args: [--severity=style]
+  - repo: https://github.com/hituzi-no-sippo/pre-commit-hook-with-shellharden
+    rev: ed57b90bb6a7c64bf5655c50bac082e67b157c00
+    hooks:
+      - id: shellharden
+
+  # JSON & YAML
+  # Formatter
+  - repo: https://github.com/adamchainz/pre-commit-dprint
+    rev: v0.32.1
+    hooks:
+      - id: dprint
+        types_or:
+          - json
+          - yaml
+
+  # JSON
+  # Lint
+  - repo: https://github.com/TomWright/dasel
+    rev: v1.27.1
+    hooks:
+      - id: dasel-validate
+        types:
+          - json
+
+  # YAML
+  # Lint
+  # https://yamllint.readthedocs.io/en/stable/integration.html#integration-with-pre-commit
+  - repo: https://github.com/adrienverge/yamllint.git
+    rev: v1.28.0
+    hooks:
+      - id: yamllint
+        args: [--strict]
+
+  # GitHub Actions
+  # Lint
+  # https://github.com/rhysd/actionlint/blob/main/docs/usage.md#pre-commit
+  - repo: https://github.com/rhysd/actionlint
+    rev: v1.6.21
+    hooks:
+      - id: actionlint
+
+  # Natural Language
+  - repo: https://github.com/hituzi-no-sippo/pre-commit-hooks-with-vale
+    rev: v1.0.0
+    hooks:
+      - id: vale
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.3.0
+    hooks:
+      # Style
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+      # Git
+      - id: no-commit-to-branch
+      - id: check-merge-conflict
+      - id: check-vcs-permalinks
+      # File
+      - id: fix-byte-order-marker
+      - id: check-case-conflict
+      - id: check-added-large-files
+      # Shebang
+      - id: check-executables-have-shebangs
+      - id: check-shebang-scripts-are-executable
+      # Symlink
+      - id: check-symlinks
+      - id: destroyed-symlinks
+      # Security
+      - id: detect-private-key
+
+  - repo: https://github.com/pre-commit-ci/pre-commit-ci-config
+    rev: v1.5.1
+    hooks:
+      - id: check-pre-commit-ci-config
+
+ci:
+  autoupdate_schedule: weekly
+  autoupdate_commit_msg: "build(git-hook): update pre-commit hooks"
+  autofix_commit_msg: |
+    fix(git-hook): auto fixes from pre-commit.com hooks
+
+    for more information, see https://pre-commit.ci
+
+  skip:
+    - shellcheck
+    - shellharden
+    - dprint
+    - actionlint
+    - vale
