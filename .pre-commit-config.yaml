@@ -4,14 +4,24 @@ default_stages:
   - commit
 
 repos:
-  # YAML
+  # JSON & YAML
   # Formatter
   - repo: https://github.com/adamchainz/pre-commit-dprint
     rev: v0.32.1
     hooks:
       - id: dprint
         types_or:
+          - json
           - yaml
+
+  # JSON
+  # Lint
+  - repo: https://github.com/TomWright/dasel
+    rev: v1.27.1
+    hooks:
+      - id: dasel-validate
+        types:
+          - json
 
   # YAML
   # Lint
@@ -34,3 +44,6 @@ ci:
     fix(git-hook): auto fixes from pre-commit.com hooks
 
     for more information, see https://pre-commit.ci
+
+  skip:
+    - dprint
