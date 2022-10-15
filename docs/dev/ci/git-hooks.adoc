@@ -1,14 +1,28 @@
 = Git hooks
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.2.0
-:revdate: 2022-07-27T13:55:06+09:00
-:revremark: Add pre-commit of git hooks manager
+:revnumber: v0.4.0
+:revdate: 2022-07-27T14:47:37+09:00
+:revremark: Add hook for validation for pre-commit.ci configuration
 :description: Git hooks
 :copyright: Copyright (C) 2022 {author}
 // Custom Attributes
 :creation_date: 2022-07-24T17:28:24+09:00
+:github_url: https://github.com
+:pre_commit_ci_org_url: {github_url}/pre-commit-ci
 :pre_commit_config_file: ../../../.pre-commit-config.yaml
+
+== Hooks
+
+Write the documentation for the linter and formatter hooks
+into the target document.
+For example, the JSON formatter hooks are in the JSON document.
+
+=== pre-commit
+
+:validation_for_pre_commit_ci_config_link: {pre_commit_ci_org_url}/pre-commit-ci-config#as-a-pre-commit-hook[validation for pre-commit.ci configuration^]
+* {validation_for_pre_commit_ci_config_link}
+
 
 == Manager
 
@@ -16,6 +30,17 @@
 Using {pre_commit_link}.
 
 link:{pre_commit_config_file}[Configuration File^]
+
+=== Auto update
+
+:pre_commit_ci_url: https://pre-commit.ci
+Using link:{pre_commit_ci_url}[pre-commit ci^].
+
+link:{pre_commit_ci_url}#:~:text=get%20faster%20builds!-,automatic%20updates%3A,-pre%2Dcommit.ci[
+pre-commit.ci will auto update version of hooks^].
+pre-commit.ci does automatic updates
+link:{pre_commit_config_file}#:~:text=autoupdate_schedule%3A%20weekly[
+every week^].
 
 
 '''

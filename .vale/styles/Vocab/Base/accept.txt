@@ -3,4 +3,5 @@ JSON
 yaml
 YAML
 CI
+ci
 GitHub Actions
