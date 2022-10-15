@@ -80,6 +80,12 @@ repos:
       - id: fix-byte-order-marker
       - id: check-case-conflict
       - id: check-added-large-files
+      # Shebang
+      - id: check-executables-have-shebangs
+      - id: check-shebang-scripts-are-executable
+      # Symlink
+      - id: check-symlinks
+      - id: destroyed-symlinks
 
   - repo: https://github.com/pre-commit-ci/pre-commit-ci-config
     rev: v1.5.1
