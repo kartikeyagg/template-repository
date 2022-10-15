@@ -50,6 +50,14 @@ repos:
       - id: yamllint
         args: [--strict]
 
+  # GitHub Actions
+  # Lint
+  # https://github.com/rhysd/actionlint/blob/main/docs/usage.md#pre-commit
+  - repo: https://github.com/rhysd/actionlint
+    rev: v1.6.21
+    hooks:
+      - id: actionlint
+
   - repo: https://github.com/pre-commit-ci/pre-commit-ci-config
     rev: v1.5.1
     hooks:
@@ -67,3 +75,4 @@ ci:
     - shellcheck
     - shellharden
     - dprint
+    - actionlint
