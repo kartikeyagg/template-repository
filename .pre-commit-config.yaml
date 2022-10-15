@@ -4,6 +4,24 @@ default_stages:
   - commit
 
 repos:
+  # YAML
+  # Formatter
+  - repo: https://github.com/adamchainz/pre-commit-dprint
+    rev: v0.32.1
+    hooks:
+      - id: dprint
+        types_or:
+          - yaml
+
+  # YAML
+  # Lint
+  # https://yamllint.readthedocs.io/en/stable/integration.html#integration-with-pre-commit
+  - repo: https://github.com/adrienverge/yamllint.git
+    rev: v1.28.0
+    hooks:
+      - id: yamllint
+        args: [--strict]
+
   - repo: https://github.com/pre-commit-ci/pre-commit-ci-config
     rev: v1.5.1
     hooks:
