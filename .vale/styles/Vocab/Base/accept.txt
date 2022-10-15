@@ -2,6 +2,7 @@ json
 JSON
 yaml
 YAML
+toml
 TOML
 CI
 ci
