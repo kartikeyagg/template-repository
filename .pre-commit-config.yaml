@@ -31,6 +31,7 @@ repos:
         types_or:
           - json
           - yaml
+          - markdown
 
   # JSON
   # Lint
