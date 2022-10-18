@@ -101,8 +101,12 @@ function __setup_markdown_tools() {
 	function __setup_formatter() {
 		cargo install dprint
 	}
+	function __setup_linter() {
+		npm install
+	}
 
 	__setup_formatter
+	__setup_linter
 }
 
 function setup() {
