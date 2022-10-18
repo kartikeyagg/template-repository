@@ -95,6 +95,19 @@ function __setup_natural_language() {
 
 	__setup_linter
 }
+function __setup_markdown_tools() {
+	info "Setup Markdown tools"
+
+	function __setup_formatter() {
+		cargo install dprint
+	}
+	function __setup_linter() {
+		npm install
+	}
+
+	__setup_formatter
+	__setup_linter
+}
 
 function setup() {
 	info "Setup Start"
@@ -109,6 +122,7 @@ function setup() {
 	__setup_git_hooks
 	__setup_changelog_generator
 	__setup_natural_language
+	__setup_markdown_tools
 
 	info "Setup Complete"
 }

@@ -1,0 +1,48 @@
+---
+name: Lint Markdown
+
+on:
+  push:
+    paths:
+      - "**.md"
+      - ".dprint.json"
+      - ".markdownlint.jsonc?"
+      - ".markdownlint.yam?l"
+      - ".markdownlintignore"
+
+  pull_request:
+    paths:
+      - "**.md"
+      - ".dprint.json"
+      - ".markdownlint.jsonc?"
+      - ".markdownlint.yam?l"
+      - ".markdownlintignore"
+
+jobs:
+  format:
+    name: Check format
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Check format with dprint
+        # yamllint disable-line rule:line-length
+        uses: hituzi-no-sippo/check@21681de30f5916de2235da7f22bf7462bb7004cb
+        with:
+          file-patterns: '"**/*.md"'
+
+  lint:
+    name: Lint
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run markdownlint-cli with reviewdog
+        uses: reviewdog/action-markdownlint@v0
+        with:
+          fail_on_error: true
+          filter_mode: file
+          # yamllint disable-line rule:line-length
+          reporter: ${{ (github.event_name == 'pull_request' && 'github-pr-review') || 'github-check' }}
