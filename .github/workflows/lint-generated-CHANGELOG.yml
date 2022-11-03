@@ -1,0 +1,32 @@
+---
+name: Lint generated CHANGELOG.md
+
+on:
+  push:
+    paths:
+      - "cliff.toml"
+      - "scripts/release/lint-generated-CHANGELOG.sh"
+  pull_request:
+    paths:
+      - "cliff.toml"
+      - "scripts/release/lint-generated-CHANGELOG.sh"
+
+jobs:
+  lint:
+    name: Lint generate CHANGELOG with git-cliff
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          # Get the full git history to generate Release Note with git-cliff.
+          fetch-depth: 0
+
+      - name: Setup CHANGELOG generator
+        uses: kenji-miyake/setup-git-cliff@v1
+
+      - name: Setup Markdown formatter and linter
+        uses: ./.github/actions/setup-markdown-formatter-and-linter
+
+      - name: Lint generated CHANGELOG
+        run: bash scripts/release/lint-generated-CHANGELOG.sh
