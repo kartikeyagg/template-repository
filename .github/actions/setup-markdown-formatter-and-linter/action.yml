@@ -1,0 +1,20 @@
+---
+name: Setup Markdown formatter and Linter
+description: Setup Markdown formatter and Linter
+
+runs:
+  using: composite
+  steps:
+    - name: Install formatter
+      shell: bash
+      run: |
+        curl -fsSL https://dprint.dev/install.sh | sh
+        echo "/home/runner/.dprint/bin" >> "$GITHUB_PATH"
+
+    - name: Setup Node
+      uses: actions/setup-node@v3
+      with:
+        cache: npm
+    - name: Install linter
+      shell: bash
+      run: npm ci
