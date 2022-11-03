@@ -96,6 +96,15 @@ repos:
     hooks:
       - id: vale
 
+  # CHANGELOG
+  - repo: local
+    hooks:
+      - id: lint-generated-CHANGELOG-with-markdown-linter
+        name: lint generated CHANGELOG with markdownlint-cli of markdown linter
+        language: script
+        entry: scripts/release/lint-generated-CHANGELOG.sh
+        files: cliff.toml
+
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.3.0
     hooks:
@@ -142,3 +151,4 @@ ci:
     - taplo-lint
     - actionlint
     - vale
+    - lint-generated-CHANGELOG-with-markdown-linter
