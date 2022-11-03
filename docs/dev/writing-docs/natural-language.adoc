@@ -1,9 +1,9 @@
 = Natural language
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.5.0
-:revdate: 2022-08-06T11:00:12+09:00
-:revremark: Add GitHub Action to lint
+:revnumber: v0.6.0
+:revdate: 2022-11-03T18:12:15+09:00
+:revremark: Add link to git hook
 :description: Natural language
 :copyright: Copyright (C) 2022 {author}
 // Custom Attributes
@@ -11,6 +11,7 @@
 :github_url: https://github.com
 :root_directory: ../../..
 :base_directory: {root_directory}/.vale/styles/Vocab/Base
+:pre_commit_config_file: {root_directory}/.pre-commit-config.yaml
 :workflows_directory: {root_directory}/.github/workflows
 
 == Lint
@@ -41,6 +42,12 @@ If you want to prohibit certain words,
 please write words into `{base_directory}/reject.txt`.
 For details, please read link:{vale_topic_docs_url}/vocab/[Vocabularies^].
 
+:pre_commit_to_lint_link: link:{github_url}/scop/pre-commit-shfmt[hituzi-no-sippo/pre-commit-hook-with-vale^]
+.Git hooks
+pre-commit::
+  Using link:{pre_commit_config_file}#:~:text=%2D%20repo%3A%20https%3A%2F/github.com/hituzi%2Dno%2Dsippo/pre%2Dcommit%2Dhook%2Dwith%vale[
+  pre-commit^] ({pre_commit_to_lint_link})
+
 :filename: lint-natural-language-text.yml
 :github_actions_marketplace_url: {github_url}/marketplace/actions
 :run_vale_with_reviewdog_link: link:{github_actions_marketplace_url}/vale-linter[vale-linter^]
@@ -56,6 +63,11 @@ Vale can check spelling (`Vale.Spelling`).
 Ignore words in link:{base_directory}/vocab.txt[vocab.txt^] with
 link:{github_url}/errata-ai/vale/blob/v2/internal/rule/Vale/Spelling.yml[
 spell check^].
+
+.Git hooks
+pre-commit::
+  Using link:{pre_commit_config_file}#:~:text=%2D%20repo%3A%20https%3A%2F/github.com/hituzi%2Dno%2Dsippo/pre%2Dcommit%2Dhook%2Dwith%vale[
+  pre-commit^] ({pre_commit_to_lint_link})
 
 :filename: lint-natural-language-text.yml
 .GitHub Actions

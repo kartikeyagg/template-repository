@@ -58,6 +58,12 @@ repos:
     hooks:
       - id: actionlint
 
+  # Natural Language
+  - repo: https://github.com/hituzi-no-sippo/pre-commit-hooks-with-vale
+    rev: v1.0.0
+    hooks:
+      - id: vale
+
   - repo: https://github.com/pre-commit-ci/pre-commit-ci-config
     rev: v1.5.1
     hooks:
@@ -76,3 +82,4 @@ ci:
     - shellharden
     - dprint
     - actionlint
+    - vale
