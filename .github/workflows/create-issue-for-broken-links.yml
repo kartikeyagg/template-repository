@@ -1,0 +1,29 @@
+---
+name: Create a issue for broken links
+
+on:
+  # yamllint disable-line rule:empty-values
+  workflow_dispatch:
+  schedule:
+    - cron: "00 00 * * *"
+
+jobs:
+  check:
+    uses: ./.github/workflows/check-broken-links.yml
+
+  create-issue:
+    name: Create issue for report of lychee
+    needs: check
+    if: always() &&
+      needs.check.result == 'failure' &&
+      needs.check.outputs.report
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Create issue from report of lychee
+        uses: dacbd/create-issue-action@v1
+        with:
+          title: Link Checker Report
+          body: ${{ needs.check.outputs.report }}
+          labels: documentation, good first issue, report, automated issue
+          token: ${{ github.token }}
