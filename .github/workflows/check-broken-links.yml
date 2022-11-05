@@ -1,0 +1,44 @@
+---
+name: Check broken links
+
+on:
+  # yamllint disable-line rule:empty-values
+  push:
+  workflow_call:
+    outputs:
+      report:
+        description: lychee report body
+        value: ${{ jobs.check.outputs.report }}
+
+jobs:
+  check:
+    name: Check broken links
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      report: ${{ steps.output-report.outputs.report }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Check broken url with lychee
+        # yamllint disable-line rule:line-length
+        uses: hituzi-no-sippo/lychee-action@3fd0558ab89038aee602fd375ad50fa722056c3b
+        id: check-links
+        with:
+          args: --verbose --no-progress "**/*"
+          fail: true
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+      - name: Output report of lychee
+        if: failure() && github.event_name != 'push'
+        id: output-report
+        run: |
+          # For multiline strings
+          # https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#multiline-strings
+          delimiter="$(openssl rand -hex 8)"
+          {
+            echo "report<<${delimiter}"
+            cat ./lychee/out.md
+            echo "${delimiter}"
+          } >> "${GITHUB_OUTPUT}"

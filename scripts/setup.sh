@@ -113,6 +113,15 @@ function __setup_markdown_tools() {
 	__setup_formatter
 	__setup_linter
 }
+function __setup_link_tools() {
+	info "Setup Link tools"
+
+	function __setup_checker() {
+		cargo install lychee
+	}
+
+	__setup_checker
+}
 
 function setup() {
 	info "Setup Start"
@@ -129,6 +138,7 @@ function setup() {
 	__setup_natural_language
 	__setup_spell_checker
 	__setup_markdown_tools
+	__setup_link_tools
 
 	info "Setup Complete"
 }
