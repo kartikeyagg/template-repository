@@ -45,3 +45,25 @@ jobs:
 
       - name: Check for formatting changes
         run: git diff --exit-code log.md
+
+  natural-language-text:
+    name: Lint natural language text
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Output git commit message to file
+        uses: ./.github/actions/output-git-commit-message-to-file
+
+      - name: Run natural language texts with reviewdog
+        uses: errata-ai/vale-action@v2
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        with:
+          files: log.txt
+          filter_mode: file
+          fail_on_error: true
+          reporter: github-check
