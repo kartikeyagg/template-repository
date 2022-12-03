@@ -15,3 +15,7 @@ mergeability
 taplo
 cocogitto
 npm
+node_modules
+markdownlint
+validator
+msg

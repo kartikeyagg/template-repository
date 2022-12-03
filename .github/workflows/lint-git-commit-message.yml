@@ -19,3 +19,73 @@ jobs:
         uses: cocogitto/cocogitto-action@v3
         with:
           check-latest-tag-only: true
+
+  format:
+    name: Check format
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Markdown formatter and linter
+        uses: ./.github/actions/setup-markdown-formatter-and-linter
+
+      - name: Output git commit message to file
+        uses: ./.github/actions/output-git-commit-message-to-file
+        with:
+          file: log.md
+
+      - name: Add file to git index
+        run: git add log.md
+
+      - name: Format commit message
+        run: bash scripts/git/format-commit-msg.sh log.md
+
+      - name: Check for formatting changes
+        run: git diff --exit-code log.md
+
+  natural-language-text:
+    name: Lint natural language text
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Output git commit message to file
+        uses: ./.github/actions/output-git-commit-message-to-file
+
+      - name: Run natural language texts with reviewdog
+        uses: errata-ai/vale-action@v2
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        with:
+          files: log.txt
+          filter_mode: file
+          fail_on_error: true
+          reporter: github-check
+
+  link:
+    name: Check broken links
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Output git commit message to file
+        uses: ./.github/actions/output-git-commit-message-to-file
+
+      - name: Check broken url with lychee
+        # yamllint disable-line rule:line-length
+        uses: hituzi-no-sippo/lychee-action@3fd0558ab89038aee602fd375ad50fa722056c3b
+        id: check-links
+        with:
+          args: --verbose --no-progress log.txt
+          fail: true
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
