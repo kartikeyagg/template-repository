@@ -95,6 +95,32 @@ repos:
           - scala
           - gdscript
           - solidity
+      - id: check-code-duplication-rate
+        name: Check code duplication rate
+        language: script
+        entry: scripts/code-analyze/check-duplication-rate.sh
+          --duplicate 0 --unique 100
+        stages:
+          - commit
+        types_or:
+          - c
+          - c++
+          - c#
+          - objective-c
+          - java
+          - javascript
+          - ts
+          - tsx
+          - python
+          - ruby
+          - go
+          - rust
+          - kotlin
+          - php
+          - lua
+          - scala
+          - gdscript
+          - solidity
 
   # GitHub Actions
   # Lint
@@ -217,6 +243,7 @@ ci:
     - taplo-format
     - taplo-lint
     - check-code-complexity
+    - check-code-duplication-rate
     - actionlint
     - vale
     - format-commit-msg
