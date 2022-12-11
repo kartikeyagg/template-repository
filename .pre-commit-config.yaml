@@ -67,6 +67,35 @@ repos:
       - id: editorconfig-checker
         files: ^.*\.ini$
 
+  # Code Analyze
+  - repo: local
+    hooks:
+      - id: check-code-complexity
+        name: Check nloc and CCN, parameter count of function
+        language: script
+        entry: scripts/code-analyze/check-code-complexity.sh
+        stages:
+          - commit
+        types_or:
+          - c
+          - c++
+          - c#
+          - objective-c
+          - java
+          - javascript
+          - ts
+          - tsx
+          - python
+          - ruby
+          - go
+          - rust
+          - kotlin
+          - php
+          - lua
+          - scala
+          - gdscript
+          - solidity
+
   # GitHub Actions
   # Lint
   # https://github.com/rhysd/actionlint/blob/main/docs/usage.md#pre-commit
@@ -187,6 +216,7 @@ ci:
     - dprint
     - taplo-format
     - taplo-lint
+    - check-code-complexity
     - actionlint
     - vale
     - format-commit-msg

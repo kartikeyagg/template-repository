@@ -81,6 +81,11 @@ function __setup_git_hooks() {
 		--hook-type pre-commit \
 		--hook-type commit-msg
 }
+function __setup_code_analyzer() {
+	info "Setup code analyzer"
+
+	python -m pip install --upgrade lizard
+}
 function __setup_changelog_generator() {
 	info "Setup CHANGELOG generator"
 
@@ -134,6 +139,7 @@ function setup() {
 	__setup_github_actions_linter
 	__setup_git_commit_message
 	__setup_git_hooks
+	__setup_code_analyzer
 	__setup_changelog_generator
 	__setup_natural_language
 	__setup_spell_checker
