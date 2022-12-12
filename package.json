@@ -3,6 +3,7 @@
     "lint:md": "markdownlint"
   },
   "devDependencies": {
+    "asciidoctor": "^2.2.6",
     "markdownlint-cli": "^0.32.2"
   }
 }
