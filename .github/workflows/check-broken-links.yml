@@ -20,6 +20,17 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          cache: npm
+      - name: Install a converter to convert AsciiDoc to HTML.
+        run: npm ci
+      - name: Convert AsciiDoc to HTML
+        run: |
+          find . -type f -name '*.adoc' \
+            -exec npm run convert-asciidoc-to-html -- --verbose {} +
+
       - name: Check broken url with lychee
         # yamllint disable-line rule:line-length
         uses: hituzi-no-sippo/lychee-action@3fd0558ab89038aee602fd375ad50fa722056c3b
