@@ -152,6 +152,12 @@ repos:
         entry: scripts/docs/lint-asciidoc.sh
         types:
           - asciidoc
+      - id: check-broken-links-for-asciidoc
+        name: Check broken links to converted HTML from AsciiDoc.
+        language: script
+        entry: scripts/docs/check-broken-links-for-asciidoc.sh
+        types:
+          - asciidoc
 
   # Commit message
   # Lint
@@ -207,6 +213,9 @@ repos:
         args:
           - --cache
           - --max-cache-age=1d
+        # AsciiDoc links are checked with check-broken-links-for-asciidoc.
+        exclude_types:
+          - asciidoc
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.3.0
@@ -256,6 +265,7 @@ ci:
     - check-code-duplication-rate
     - actionlint
     - lint-asciidoc
+    - check-broken-links-for-asciidoc
     - vale
     - format-commit-msg
     - lint-natural-language-text-of-commit-msg
