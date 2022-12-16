@@ -11,6 +11,48 @@ jobs:
   check:
     uses: ./.github/workflows/check-broken-links.yml
 
+  search-issue-to-update:
+    name: Search issue to update
+    needs: check
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      issue-number: ${{ steps.search.outputs.issue-number}}
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Search Issue
+        id: search
+        run: |
+          number=$(
+            gh issue list \
+              --search 'Link Checker Report in:title' \
+              --label 'good first issue' \
+              --label 'documentation' \
+              --label 'report' \
+              --label 'automated issue' \
+              --state open \
+              --json number \
+              --jq '.[].number' \
+              --limit 1 \
+              --repo ${{ github.repository }}
+          )
+          echo "issue-number=$number" >> "${GITHUB_OUTPUT}"
+
+  update-issue-body:
+    name: Update issue body
+    needs: search-issue-to-update
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Update issue
+        run: |
+          echo ${{needs.search-issue-to-update.outputs.issue-number}}
+
   create-issue:
     name: Create issue for report of lychee
     needs: check
