@@ -14,7 +14,9 @@ jobs:
   search-issue-to-update:
     name: Search issue to update
     needs: check
-    if: always()
+    if: always() &&
+      needs.check.result == 'failure' &&
+      needs.check.outputs.report
     runs-on: ubuntu-latest
     timeout-minutes: 5
     outputs:
@@ -45,7 +47,9 @@ jobs:
     needs:
       - check
       - search-issue-to-update
-    if: always()
+    if: always() &&
+      needs.check.outputs.report &&
+      needs.search-issue-to-update.outputs.issue-number
     runs-on: ubuntu-latest
     timeout-minutes: 5
     env:
@@ -60,8 +64,12 @@ jobs:
 
   create-issue:
     name: Create issue for report of lychee
-    needs: check
-    if: always()
+    needs:
+      - check
+      - search-issue-to-update
+    if: always() &&
+      needs.check.outputs.report &&
+      !needs.search-issue-to-update.outputs.issue-number
     runs-on: ubuntu-latest
     timeout-minutes: 5
     env:
