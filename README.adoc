@@ -14,7 +14,7 @@
 :github_url: https://github.com
 :repository_url: {github_url}/{repository}
 
-https://github
+https://github.com/hituzi-no-sippo/template-repository.git
 
 == Tools
 
