@@ -42,7 +42,9 @@ jobs:
 
   update-issue-body:
     name: Update issue body
-    needs: search-issue-to-update
+    needs:
+      - check
+      - search-issue-to-update
     if: always()
     runs-on: ubuntu-latest
     timeout-minutes: 5
@@ -51,7 +53,10 @@ jobs:
     steps:
       - name: Update issue
         run: |
-          echo ${{needs.search-issue-to-update.outputs.issue-number}}
+          gh issue edit \
+            "${{needs.search-issue-to-update.outputs.issue-number}}" \
+            --body "${{ needs.check.outputs.report }}" \
+            --repo ${{ github.repository }}
 
   create-issue:
     name: Create issue for report of lychee
