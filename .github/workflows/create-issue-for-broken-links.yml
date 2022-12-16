@@ -3,7 +3,7 @@ name: Create a issue for broken links
 
 on:
   # yamllint disable-line rule:empty-values
-  workflow_dispatch:
+  push:
   schedule:
     - cron: "00 00 * * *"
 
@@ -14,16 +14,39 @@ jobs:
   create-issue:
     name: Create issue for report of lychee
     needs: check
-    if: always() &&
-      needs.check.result == 'failure' &&
-      needs.check.outputs.report
+    if: always()
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
+      - name: Create the labels to be used
+        run: |
+          names=(
+            'documentation'
+            'good first issue'
+            'report'
+            'automated issue'
+          )
+          for name in "${names[@]}"; do
+            existing=$(
+              gh label list \
+                --json name \
+                --jq .[].name \
+                --repo ${{ github.repository }}
+             )
+            if [[ "$existing" != *"$name"* ]]; then
+              gh label create "$name" --repo ${{ github.repository }}
+            fi
+          done
+
       - name: Create issue from report of lychee
-        uses: dacbd/create-issue-action@v1
-        with:
-          title: Link Checker Report
-          body: ${{ needs.check.outputs.report }}
-          labels: documentation, good first issue, report, automated issue
-          token: ${{ github.token }}
+        run: |
+          gh issue create \
+            --title 'Link Checker Report' \
+            --body "${{ needs.check.outputs.report }}" \
+            --label documentation \
+            --label 'good first issue' \
+            --label report \
+            --label 'automated issue' \
+            --repo ${{ github.repository }}
